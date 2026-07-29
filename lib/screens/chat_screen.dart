@@ -514,9 +514,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               );
             });
           },
-          onDone: () {
-            if (mounted) setState(() => _isListening = false);
-          },
           listenFor: const Duration(seconds: 30),
           localeId: 'zh_CN',
         );

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io' as io;
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/io.dart';
 
 class ApiService {
   String baseUrl;
@@ -96,7 +96,7 @@ class ApiService {
         '$wsUrl/ws',
         headers: {'Authorization': 'Bearer $token'},
       );
-      _wsChannel = WebSocketChannel(ws);
+      _wsChannel = IOWebSocketChannel(ws);
 
       _wsChannel!.stream.listen(
         (data) {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:speech_to_text/speech_to_text.dart' show SpeechListenOptions;
 import '../main.dart';
 import '../models/message.dart';
 import '../services/api_service.dart';
@@ -514,8 +515,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               );
             });
           },
-          listenFor: const Duration(seconds: 30),
-          localeId: 'zh_CN',
+          options: SpeechListenOptions(
+            listenFor: const Duration(seconds: 30),
+            localeId: 'zh_CN',
+          ),
         );
         setState(() => _isListening = true);
       } catch (e) {
@@ -610,7 +613,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               setState(() => _messages.clear());
               await _messageStore.clearAll(mode: _modeKey);
               _markAllAsSeen();
-              if (mounted) Navigator.pop(ctx);
+              if (ctx.mounted) Navigator.pop(ctx);
             },
             child: const Text('清空'),
           ),

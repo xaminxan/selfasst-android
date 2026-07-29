@@ -515,7 +515,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               );
             });
           },
-          options: SpeechListenOptions(
+          listenOptions: SpeechListenOptions(
             listenFor: const Duration(seconds: 30),
             localeId: 'zh_CN',
           ),

@@ -40,7 +40,7 @@ class ApiService {
     try {
       final body = jsonEncode({
         'message': message,
-        ?'conversation_id': conversationId,
+        if (conversationId != null) 'conversation_id': conversationId,
         if (mode.isNotEmpty) 'mode': mode,
       });
 
@@ -178,7 +178,7 @@ class ApiService {
     try {
       final body = jsonEncode({
         'message': message,
-        ?'conversation_id': conversationId,
+        if (conversationId != null) 'conversation_id': conversationId,
         if (mode.isNotEmpty) 'mode': mode,
       });
 
@@ -235,7 +235,7 @@ class ApiService {
     try {
       final uri = Uri.parse('$baseUrl/v1/history').replace(
         queryParameters: {
-          ?'conversation_id': conversationId,
+          if (conversationId != null) 'conversation_id': conversationId,
           if (mode.isNotEmpty) 'mode': mode,
           'limit': limit.toString(),
         },
